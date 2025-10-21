@@ -1,0 +1,21 @@
+name: Feature
+title: '[Feature]: '
+description: Template for new features.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A detailed description for this issue, provide all necessary information so any member of the project understands. You can describe or use the following template -> As a `<type of user>`, I want `<some goal>` so that `<some reason>`.
+      placeholder: Describe the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Design
+      description: Provide references to images of the design, how it looks now, and how it should look like.
+      placeholder: Attach images or links to images.
+    validations:
+      required: false
