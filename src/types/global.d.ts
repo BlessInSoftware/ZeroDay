@@ -1,6 +1,8 @@
+import { Temporal } from '@js-temporal/polyfill';
+
 export interface Incident {
   id: number;
   title: string;
   description: string;
-  date: Date;
+  history: Temporal.Instant[];
 }
