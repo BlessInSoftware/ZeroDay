@@ -1,0 +1,52 @@
+name: Build Docker Image
+
+on:
+  workflow_call:
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: 🏗️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🧰 Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏷️ Generate metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=tag
+            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/') }}
+            type=raw,value=development,enable=${{ github.ref == 'refs/heads/main' }}
+            type=sha
+
+      - name: 🏗️ Build image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          outputs: type=docker,dest=/tmp/image.tar
+          tags: ${{ steps.meta.outputs.tags }}
+
+      - name: 💾 Save tags
+        run: echo "${{ steps.meta.outputs.tags }}" > /tmp/tags.txt
+
+      - name: 📦 Upload image
+        uses: actions/upload-artifact@v4
+        with:
+          name: image
+          path: /tmp/image.tar
+
+      - name: 📦 Upload tags
+        uses: actions/upload-artifact@v4
+        with:
+          name: tags
+          path: /tmp/tags.txt
