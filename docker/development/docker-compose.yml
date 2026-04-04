@@ -1,0 +1,8 @@
+name: blessinsoftware
+services:
+  zeroday:
+    container_name: zeroday
+    image: blessinsoftware/zeroday
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
