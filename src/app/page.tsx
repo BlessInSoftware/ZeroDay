@@ -14,12 +14,12 @@ export default function HomePage() {
   };
 
   return (
-    <div className='max-w-2xl mx-auto'>
+    <div className="mx-auto max-w-2xl">
       <IncidentForm onAddIncident={handleAddIncident} />
-      <h2 className='text-lg font-semibold mt-8 mb-4 text-white'>Incident History</h2>
-      <div className='space-y-3'>
+      <h2 className="mt-8 mb-4 text-lg font-semibold text-white">Incident History</h2>
+      <div className="space-y-3">
         {incidents.length === 0 ? (
-          <p className='text-gray-500'>No incidents recorded.</p>
+          <p className="text-gray-500">No incidents recorded.</p>
         ) : (
           incidents.map((incident) => <Counter key={incident.id} props={incident} />)
         )}

@@ -1,14 +1,40 @@
 {
-  "name": "zero-day-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "zeroday",
+  "version": "1.0.0",
+  "description": "ZeroDay is a web app that tracks the number of days since the last incident, accident, or failure, helping teams maintain safety and encourage responsible habits.",
+  "keywords": [],
+  "author": {
+    "name": "Jesús Iván Godínez Martínez",
+    "email": "ivano.godinez@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Juan Pablo Jiménez Covarrubias",
+      "email": "pablo.jimenezdev@gmail.com"
+    },
+    {
+      "name": "Cristian C. Giraldo",
+      "email": "cc.giraldo11@gmail.com"
+    }
+  ],
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
+    "commit": "commit",
+    "dev": "next dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lint-staged": "lint-staged",
+    "prepare": "bun .husky/install.ts",
+    "prettier": "prettier ./src --write",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "start": "next start",
+    "test": "bun test",
+    "test:cov": "bun test --coverage"
+  },
+  "engineStrict": true,
+  "engines": {
+    "bun": "1.x"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -17,21 +43,37 @@
     "@mui/icons-material": "^7.3.9",
     "@mui/material": "^7.3.9",
     "@prisma/client": "^7.6.0",
-    "next": "16.2.2",
+    "next": "^16.2.2",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "prisma": "^7.6.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/prompt-cli": "^20.5.0",
     "@eslint/eslintrc": "^3.3.5",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/bun": "^1.3.11",
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^10.2.0",
-    "eslint-config-next": "16.2.2",
+    "eslint-config-next": "^16.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
-  }
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
 }

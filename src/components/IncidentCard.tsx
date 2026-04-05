@@ -10,10 +10,10 @@ export function IncidentCard({ incident }: Props) {
   const formattedDate = `${day}-${month}-${year}`;
 
   return (
-    <div className='bg-white p-4 rounded-lg shadow-sm border'>
-      <h3 className='font-semibold text-black'>{incident.title}</h3>
-      <p className='text-sm text-gray-600 mt-1'>{incident.description}</p>
-      <span className='text-xs text-red-600 mt-2 block'>{formattedDate}</span>
+    <div className="rounded-lg border bg-white p-4 shadow-sm">
+      <h3 className="font-semibold text-black">{incident.title}</h3>
+      <p className="mt-1 text-sm text-gray-600">{incident.description}</p>
+      <span className="mt-2 block text-xs text-red-600">{formattedDate}</span>
     </div>
   );
 }
