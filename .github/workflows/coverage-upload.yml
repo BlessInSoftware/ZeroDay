@@ -1,0 +1,36 @@
+name: Coverage Upload
+
+on:
+  workflow_call:
+    secrets:
+      CODACY_PROJECT_TOKEN:
+        required: false
+
+jobs:
+  upload-coverage:
+    name: Upload coverage to Codacy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    steps:
+      - name: 📥 Download coverage artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage
+
+      - name: ✅ Validate downloaded coverage files
+        run: |
+          test -d coverage && [ -n "$(find coverage -type f -print -quit)" ] || {
+            echo "Coverage artifact is missing or empty"
+            exit 1
+          }
+
+      - name: 📤 Upload coverage to Codacy
+        if: env.CODACY_PROJECT_TOKEN != ''
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ env.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/**
