@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  coverage-collect:
+    name: Run tests and collect coverage
+    permissions:
+      contents: read
+    uses: ./.github/workflows/coverage-collect.yml
+
+  coverage-upload:
+    name: Upload coverage
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
+    permissions:
+      contents: read
+    needs: coverage-collect
+    uses: ./.github/workflows/coverage-upload.yml
+    secrets: inherit

@@ -9,11 +9,13 @@ on:
 
 jobs:
   build:
+    name: Build Docker Image
     permissions:
       contents: read
     uses: ./.github/workflows/docker-build.yml
 
   publish:
+    name: Publish Docker Image
     needs: build
     permissions:
       contents: read
