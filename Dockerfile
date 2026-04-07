@@ -2,6 +2,7 @@ FROM oven/bun:1 AS deps
 WORKDIR /app
 
 COPY package.json bun.lock ./
+COPY .husky/install.ts ./.husky/install.ts
 RUN bun install --frozen-lockfile
 
 FROM oven/bun:1 AS builder
@@ -21,6 +22,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 
 COPY --chown=bun:bun package.json bun.lock ./
+COPY --chown=bun:bun .husky/install.ts ./.husky/install.ts
 RUN bun install --frozen-lockfile --production
 
 COPY --from=builder --chown=bun:bun /app/.next ./.next
