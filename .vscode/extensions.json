@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    // Required
+    "DavidAnson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "github.vscode-github-actions",
+    // Optional
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss",
+    "ms-azuretools.vscode-containers",
+    "ms-azuretools.vscode-docker",
+    "ms-edgedevtools.vscode-edge-devtools",
+    "ms-vscode-remote.remote-containers",
+    "usernamehw.errorlens",
+    "yoavbls.pretty-ts-errors"
+  ]
+}

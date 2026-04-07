@@ -7,9 +7,14 @@
       "cwd": "${workspaceFolder}",
       "name": "Server",
       "request": "launch",
-      "runtimeArgs": ["run", "dev"],
-      "runtimeExecutable": "npm",
-      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "runtimeExecutable": "bun",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "type": "node"
     },
     {
@@ -21,8 +26,11 @@
       },
       "name": "Full stack (Edge client)",
       "request": "launch",
-      "runtimeArgs": ["run", "dev"],
-      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "runtimeExecutable": "bun",
       "serverReadyAction": {
         "action": "debugWithEdge",
         "killOnServerStop": true,
@@ -30,7 +38,9 @@
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}"
       },
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "type": "node"
     },
     {
@@ -42,8 +52,11 @@
       },
       "name": "Full stack (Chrome client)",
       "request": "launch",
-      "runtimeArgs": ["run", "dev"],
-      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "runtimeExecutable": "bun",
       "serverReadyAction": {
         "action": "debugWithChrome",
         "killOnServerStop": true,
@@ -51,7 +64,9 @@
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}"
       },
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "type": "node"
     }
   ]
